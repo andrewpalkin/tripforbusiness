@@ -7,8 +7,7 @@ import java.net.URLEncoder;
 
 public class ScryptPasswordUtil {
 
-    protected String getEncryptedPassword(String originalPassword)
-    {
+    protected String getEncryptedPassword(String originalPassword) {
         String encryptedPass = "";
 
         try {
@@ -20,10 +19,9 @@ public class ScryptPasswordUtil {
         return encryptedPass;
     }
 
-    protected boolean checkPassword(String originalPassword, String dbPassword)
-    {
+    protected boolean checkPassword(String originalPassword, String dbPassword) {
         String generatedSecuredPasswordHash = getEncryptedPassword(originalPassword);
-        return  SCryptUtil.check(dbPassword , generatedSecuredPasswordHash);
+        return SCryptUtil.check(dbPassword, generatedSecuredPasswordHash);
     }
 
 }
