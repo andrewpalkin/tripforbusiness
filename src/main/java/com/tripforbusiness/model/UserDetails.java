@@ -17,7 +17,7 @@ public class UserDetails {
     @ApiModelProperty(notes = "The User name", required = true)
     private String name;
     @ApiModelProperty(notes = "The User email", required = true)
-    private String password;
+    private String email;
     @ApiModelProperty(notes = "The User role (user, admin, etc)")
     private String userRole;
 
@@ -38,12 +38,12 @@ public class UserDetails {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUserRole() {
