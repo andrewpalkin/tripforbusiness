@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @ApiOperation(value = "Create new user in he system")
+    @ApiOperation(value = "Create new user in the system")
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity create(@RequestBody User user) {
         UserValidationUtil userValidationUtil = new UserValidationUtil();
