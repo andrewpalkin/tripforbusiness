@@ -7,7 +7,6 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 import java.util.Base64;
 
-
 public class ScryptPasswordUtil {
 
     private static final int ITERATIONS = 10000;
