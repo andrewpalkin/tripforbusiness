@@ -3,6 +3,8 @@ package com.tripforbusiness.controller;
 import com.tripforbusiness.helper.ScryptPasswordUtil;
 import com.tripforbusiness.helper.UserValidationUtil;
 import com.tripforbusiness.model.User;
+import com.tripforbusiness.model.UserDetails;
+import com.tripforbusiness.repository.UserDetailsRepository;
 import com.tripforbusiness.repository.UserRepository;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserDetailsRepository userDetailsRepository;
+
     @ApiOperation(value = "Create new user in the system")
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity create(@RequestBody User user) {
@@ -29,11 +34,22 @@ public class UserController {
 
         ScryptPasswordUtil scryptPasswordUtil = new ScryptPasswordUtil();
 
-        String encryptedPass = scryptPasswordUtil.getEncryptedPassword(user.getPassword());
+        String encryptedPass = scryptPasswordUtil.generateSecurePassword(user.getPassword(), user.getEmail());
         user.setPassword(encryptedPass);
 
         userRepository.save(user);
 
+        saveUserDetails(user);
+
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    private void saveUserDetails(@RequestBody User user) {
+        UserDetails userDetails = new UserDetails();
+
+        userDetails.setName(user.getName());
+        userDetails.setUserId(userRepository.findByEmail(user.getEmail()).get(0).getId());
+
+        userDetailsRepository.save(userDetails);
     }
 }

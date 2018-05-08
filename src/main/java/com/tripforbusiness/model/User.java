@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import java.util.Date;
 
-@Document(collection = "user")
+@Document(collection = "users")
 public class User {
 
     @Id
@@ -21,9 +21,6 @@ public class User {
     private String email;
     @ApiModelProperty(notes = "The User password", required = true)
     private String password;
-    @ApiModelProperty(notes = "The User role (user, admin, etc)")
-    private String userRole;
-
 
     public String getId() {
         return id;
@@ -55,13 +52,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
     }
 }

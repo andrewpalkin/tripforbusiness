@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-@Document(collection = "user")
+@Document(collection = "user_details")
 public class UserDetails {
 
     @Id
@@ -18,15 +18,18 @@ public class UserDetails {
     private String name;
     @ApiModelProperty(notes = "The User email", required = true)
     private String email;
+    @ApiModelProperty(notes = "The User Id that was auto generated on stage of user creation")
+    private String userId;
     @ApiModelProperty(notes = "The User role (user, admin, etc)")
     private String userRole;
+    @ApiModelProperty(notes = "Retrieve error message in case user not found or email not match")
+    private String errorMessage;
 
-
-    public String getId() {
+    protected String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    protected void setId(String id) {
         this.id = id;
     }
 
@@ -46,11 +49,27 @@ public class UserDetails {
         this.email = email;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public String getUserRole() {
         return userRole;
     }
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 }
