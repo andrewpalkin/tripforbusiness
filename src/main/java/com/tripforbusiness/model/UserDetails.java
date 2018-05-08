@@ -1,22 +1,14 @@
 package com.tripforbusiness.model;
 
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 
 @Document(collection = "user_details")
 public class UserDetails {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @ApiModelProperty(notes = "The database generated User Object ID", hidden = true)
-    private String id;
-    @ApiModelProperty(notes = "The User name", required = true)
+    @ApiModelProperty(notes = "The User name")
     private String name;
-    @ApiModelProperty(notes = "The User email", required = true)
+    @ApiModelProperty(notes = "The User optional email")
     private String email;
     @ApiModelProperty(notes = "The User Id that was auto generated on stage of user creation")
     private String userId;
@@ -24,14 +16,6 @@ public class UserDetails {
     private String userRole;
     @ApiModelProperty(notes = "Retrieve error message in case user not found or email not match")
     private String errorMessage;
-
-    protected String getId() {
-        return id;
-    }
-
-    protected void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
