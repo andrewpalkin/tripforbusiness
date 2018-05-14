@@ -28,18 +28,16 @@ public class LoginController {
     @Autowired
     private UserRepository userRepository;
 
-
     @ApiOperation(value = "Execute login to the system")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully login"),
             @ApiResponse(code = 400, message = "An exception is thrown when request missing parameter etc."),
             @ApiResponse(code = 401, message = "User are not authorized to do login"),
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")}
-    )
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")})
     @RequestMapping(method = RequestMethod.GET)
-        public UserDetails login(@ApiParam(value = "Email of User",required = true) @RequestParam("email") String email,
-                                 @ApiParam(value = "Password of User", required = true) @RequestParam("pass") String password) {
+    public UserDetails login(@ApiParam(value = "Email of User", required = true) @RequestParam("email") String email,
+                             @ApiParam(value = "Password of User", required = true) @RequestParam("pass") String password) {
 
         List<User> userList = userRepository.findByEmail(email);
         ScryptPasswordUtil scryptPasswordUtil = new ScryptPasswordUtil();
