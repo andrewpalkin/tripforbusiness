@@ -22,6 +22,8 @@ import java.util.List;
 @RequestMapping("/login")
 public class LoginController {
 
+    private static String ERROR_MESSAGE = "Access is denied due to invalid credentials. Please try again.";
+
     @Autowired
     private UserDetailsRepository userDetailsRepository;
 
@@ -42,8 +44,6 @@ public class LoginController {
         List<User> userList = userRepository.findByEmail(email);
         ScryptPasswordUtil scryptPasswordUtil = new ScryptPasswordUtil();
         UserDetails userDetails;
-
-        String ERROR_MESSAGE = "Access is denied due to invalid credentials. Please try again.";
 
         if (userList != null && !userList.isEmpty()) {
             if (scryptPasswordUtil.verifyUserPassword(password, userList.get(0).getPassword(), email)) {
