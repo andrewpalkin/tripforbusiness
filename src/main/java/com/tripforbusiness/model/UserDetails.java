@@ -14,8 +14,6 @@ public class UserDetails {
     private String userId;
     @ApiModelProperty(notes = "The User role (user, admin, etc)")
     private String userRole;
-    @ApiModelProperty(notes = "Retrieve error message in case user not found or email not match")
-    private String errorMessage;
 
     public String getName() {
         return name;
@@ -47,13 +45,5 @@ public class UserDetails {
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
-    }
-
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
     }
 }
