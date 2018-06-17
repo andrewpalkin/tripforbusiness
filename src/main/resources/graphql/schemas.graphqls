@@ -1,0 +1,97 @@
+schema {
+    query: Query
+}
+
+type Query{
+    findAllUsers: [User]
+    findAllPlaces: [Place]
+    findAllPlaceCategories: [PlaceCategories]
+    findAllLinkTypes: [LinkTypes]
+
+    getUser (id: String!): User
+    getPlace (id: String!): Place
+    getLinkType (id: String!): LinkTypes
+    getPlaceCategory (id: String!):  PlaceCategories
+}
+
+type User {
+    id: String
+    name: String
+    email: String
+    password: String
+}
+
+type LinkTypes{
+    id: String
+    typeId: String
+    type: String
+    name: String
+    v: Int
+    updated_at: String
+    created_at: String
+}
+
+type PlaceCategories{
+    id: String
+    categoryId: String
+    categoryName: String
+    v: Int
+    updated_at: String
+    created_at: String
+    priority: Int
+}
+
+type Place {
+    id: String
+    placeId: Int
+    placeLevel: Int
+    name: String
+    desc: String
+    address: String
+    phoneNumber: String
+    v: Int
+    updated_at: String
+    created_at: String
+    priority: Int
+    location: Location
+    openHours: [OpenHour]
+    links: [Links]
+    imgSource: [ImageSource]
+    googleInfo: GoogleInfo
+}
+
+type Location{
+    countryId: String
+    cityId: String
+    siteId: String
+}
+
+type OpenHour{
+    id: String
+    day: String
+    hours: String
+}
+
+type Links{
+    id: String
+    type: String
+    name: String
+    url: String
+}
+
+type ImageSource{
+    id: String
+    source: String
+    type: String
+}
+
+type GoogleInfo{
+    googlePlaceId: String
+    locationInfo: LocationInfo
+}
+
+type LocationInfo{
+    lng: String
+    lat: String
+}
+
