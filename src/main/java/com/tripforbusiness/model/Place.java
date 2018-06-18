@@ -1,5 +1,9 @@
-package com.tripforbusiness.model.place;
+package com.tripforbusiness.model;
 
+import com.tripforbusiness.model.general.GoogleInfo;
+import com.tripforbusiness.model.general.ImageSource;
+import com.tripforbusiness.model.general.OpenHour;
+import com.tripforbusiness.model.general.Link;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -44,7 +48,7 @@ public class Place {
     @ApiModelProperty(notes = "List of open hours of current place")
     private List<OpenHour> openHours;
     @ApiModelProperty(notes = "List of links, for example : Website, Wiki, TripAdvisor etc.")
-    private List<Links> links;
+    private List<Link> links;
     @ApiModelProperty(notes = "List of images related to current place")
     private List<ImageSource> imgSource;
 
@@ -163,11 +167,11 @@ public class Place {
         this.openHours = openHours;
     }
 
-    public List<Links> getLinks() {
+    public List<Link> getLinks() {
         return links;
     }
 
-    public void setLinks(List<Links> links) {
+    public void setLinks(List<Link> links) {
         this.links = links;
     }
 

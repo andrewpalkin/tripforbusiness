@@ -1,4 +1,4 @@
-package com.tripforbusiness.model.place;
+package com.tripforbusiness.model;
 
 import io.swagger.annotations.ApiModelProperty;
 

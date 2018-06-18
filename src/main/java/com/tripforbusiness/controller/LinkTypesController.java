@@ -1,10 +1,7 @@
 package com.tripforbusiness.controller;
 
 import com.tripforbusiness.model.LinkTypes;
-import com.tripforbusiness.model.PlaceCategories;
-import com.tripforbusiness.model.place.Links;
 import com.tripforbusiness.repository.LinkTypesRepository;
-import com.tripforbusiness.repository.PlaceCategoriesRepository;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

@@ -1,9 +1,7 @@
 package com.tripforbusiness;
 
-import com.tripforbusiness.repository.LinkTypesRepository;
-import com.tripforbusiness.repository.PlaceCategoriesRepository;
-import com.tripforbusiness.repository.PlacesRepository;
-import com.tripforbusiness.repository.UserRepository;
+import com.tripforbusiness.repository.SiteRepository;
+import com.tripforbusiness.resolver.Mutation;
 import com.tripforbusiness.resolver.Query;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,15 +15,12 @@ public class TripforbusinessApplication {
     }
 
     @Bean
-    public Query query(UserRepository userRepository,
-                       PlacesRepository placesRepository,
-                       LinkTypesRepository linkTypesRepository,
-                       PlaceCategoriesRepository placeCategoriesRepository) {
-
-        return new Query(userRepository,
-                placesRepository,
-                linkTypesRepository,
-                placeCategoriesRepository);
+    public Query query(SiteRepository siteRepository) {
+        return new Query(siteRepository);
     }
 
+    @Bean
+    public Mutation mutation(SiteRepository siteRepository) {
+        return new Mutation(siteRepository);
+    }
 }

@@ -1,5 +1,6 @@
-package com.tripforbusiness.model.place;
+package com.tripforbusiness.model.general;
 
+import com.tripforbusiness.model.general.LocationInfo;
 import io.swagger.annotations.ApiModelProperty;
 
 public class GoogleInfo {

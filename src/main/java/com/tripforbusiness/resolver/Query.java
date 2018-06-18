@@ -1,64 +1,30 @@
 package com.tripforbusiness.resolver;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import com.tripforbusiness.model.LinkTypes;
-import com.tripforbusiness.model.PlaceCategories;
-import com.tripforbusiness.model.User;
-import com.tripforbusiness.model.place.Place;
-import com.tripforbusiness.repository.LinkTypesRepository;
-import com.tripforbusiness.repository.PlaceCategoriesRepository;
-import com.tripforbusiness.repository.PlacesRepository;
-import com.tripforbusiness.repository.UserRepository;
+import com.tripforbusiness.model.*;
+import com.tripforbusiness.repository.SiteRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class Query implements GraphQLQueryResolver {
 
-    private UserRepository userRepository;
-    private PlacesRepository placesRepository;
-    private LinkTypesRepository linkTypesRepository;
-    private PlaceCategoriesRepository placeCategoriesRepository;
+    private SiteRepository siteRepository;
 
-    public Query(UserRepository userRepository,
-                 PlacesRepository placesRepository,
-                 LinkTypesRepository linkTypesRepository,
-                 PlaceCategoriesRepository placeCategoriesRepository) {
-        this.userRepository = userRepository;
-        this.placesRepository = placesRepository;
-        this.linkTypesRepository = linkTypesRepository;
-        this.placeCategoriesRepository = placeCategoriesRepository;
+    public Query(SiteRepository siteRepository) {
+        this.siteRepository = siteRepository;
     }
 
-    public Iterable<User> findAllUsers() {
-        return userRepository.findAll();
+    public List<Site> findAllSitesByCity(String cityId) {
+        return siteRepository.findAllByCityId(cityId);
     }
 
-    public Optional<User> getUser(String id) {
-        return userRepository.findById(id);
+    public List<Site> findAllSitesByCountry(String countryId) {
+        return siteRepository.findAllByCountryId(countryId);
     }
 
-    public Iterable<Place> findAllPlaces() {
-        return placesRepository.findAll();
-    }
-
-    public Optional<Place> getPlace(String id) {
-        return placesRepository.findById(id);
-    }
-
-    public Iterable<LinkTypes> findAllLinkTypes() {
-        return linkTypesRepository.findAll();
-    }
-
-    public Optional<LinkTypes> getLinkType(String id) {
-        return linkTypesRepository.findById(id);
-    }
-
-    public Iterable<PlaceCategories> findAllPlaceCategories() {
-        return placeCategoriesRepository.findAll();
-    }
-
-    public Optional<PlaceCategories> getPlaceCategory(String id) {
-        return placeCategoriesRepository.findById(id);
+    public Optional<Site> getSite(String id) {
+        return siteRepository.findById(id);
     }
 
 }

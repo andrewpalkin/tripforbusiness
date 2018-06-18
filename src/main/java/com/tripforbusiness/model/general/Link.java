@@ -1,4 +1,4 @@
-package com.tripforbusiness.model.place;
+package com.tripforbusiness.model.general;
 
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-public class Links {
+public class Link {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

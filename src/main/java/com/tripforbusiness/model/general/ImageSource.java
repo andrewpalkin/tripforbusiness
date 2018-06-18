@@ -1,4 +1,4 @@
-package com.tripforbusiness.model.place;
+package com.tripforbusiness.model.general;
 
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;

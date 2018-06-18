@@ -1,78 +1,38 @@
 schema {
     query: Query
+    mutation: Mutation
 }
 
 type Query{
-    findAllUsers: [User]
-    findAllPlaces: [Place]
-    findAllPlaceCategories: [PlaceCategories]
-    findAllLinkTypes: [LinkTypes]
 
-    getUser (id: String!): User
-    getPlace (id: String!): Place
-    getLinkType (id: String!): LinkTypes
-    getPlaceCategory (id: String!):  PlaceCategories
+    findAllSitesByCity (cityId: String!): [Site]
+    findAllSitesByCountry (countryId: String!): [Site]
+
+    getSite (id:String!): Site
 }
 
-type User {
-    id: String
-    name: String
-    email: String
-    password: String
+type Mutation {
+    newSite(cityId: String!,
+            countryId: String!,
+            name: String!,
+            address: String!,
+            description: String): Site
 }
 
-type LinkTypes{
+type Site{
     id: String
-    typeId: String
-    type: String
-    name: String
-    v: Int
+    cityId: String
+    countryId: String
     updated_at: String
     created_at: String
-}
-
-type PlaceCategories{
-    id: String
-    categoryId: String
-    categoryName: String
-    v: Int
-    updated_at: String
-    created_at: String
-    priority: Int
-}
-
-type Place {
-    id: String
-    placeId: Int
-    placeLevel: Int
     name: String
-    desc: String
-    address: String
-    phoneNumber: String
-    v: Int
-    updated_at: String
-    created_at: String
-    priority: Int
-    location: Location
-    openHours: [OpenHour]
-    links: [Links]
-    imgSource: [ImageSource]
+    description: String
+    links: [Link]
+    imgSources: [ImageSource]
     googleInfo: GoogleInfo
 }
 
-type Location{
-    countryId: String
-    cityId: String
-    siteId: String
-}
-
-type OpenHour{
-    id: String
-    day: String
-    hours: String
-}
-
-type Links{
+type Link{
     id: String
     type: String
     name: String
@@ -94,4 +54,6 @@ type LocationInfo{
     lng: String
     lat: String
 }
+
+
 

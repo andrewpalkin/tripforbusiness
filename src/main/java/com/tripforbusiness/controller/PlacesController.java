@@ -1,6 +1,6 @@
 package com.tripforbusiness.controller;
 
-import com.tripforbusiness.model.place.Place;
+import com.tripforbusiness.model.Place;
 import com.tripforbusiness.repository.PlacesRepository;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
