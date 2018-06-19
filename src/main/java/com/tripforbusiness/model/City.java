@@ -37,6 +37,8 @@ public class City {
     private List<ImageSource> imgSources;
     @ApiModelProperty(notes = "Google info of current City")
     private GoogleInfo googleInfo;
+    @ApiModelProperty(notes = "Customer sites related to current city")
+    private List<CustomerSite> customerSites;
 
     public String getId() {
         return id;
@@ -116,5 +118,13 @@ public class City {
 
     public void setGoogleInfo(GoogleInfo googleInfo) {
         this.googleInfo = googleInfo;
+    }
+
+    public List<CustomerSite> getCustomerSites() {
+        return customerSites;
+    }
+
+    public void setCustomerSites(List<CustomerSite> customerSites) {
+        this.customerSites = customerSites;
     }
 }

@@ -41,6 +41,7 @@ type Country{
     links: [Link]
     imgSources: [ImageSource]
     googleInfo: GoogleInfo
+    cities: [City]
 }
 
 type City{
@@ -54,6 +55,7 @@ type City{
     links: [Link]
     imgSources: [ImageSource]
     googleInfo: GoogleInfo
+    customerSites: [CustomerSite]
 }
 
 type CustomerSite{

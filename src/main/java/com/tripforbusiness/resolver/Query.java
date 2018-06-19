@@ -39,18 +39,47 @@ public class Query implements GraphQLQueryResolver {
     }
 
     public Optional<Country> getCountry(String id){
-        return countryRepository.findById(id);
+
+        Optional<Country> optionalCountry = countryRepository.findById(id);
+        optionalCountry.ifPresent(country -> country.setCities(getCitiesByCountry(country.getId())));
+
+        return optionalCountry;
     }
 
     public List<Country> getCountryByNameContains(String nameContains){
-        return countryRepository.findByNameContains(nameContains);
+
+        List<Country> countryList = countryRepository.findByNameContains(nameContains);
+        if(!countryList.isEmpty())
+        {
+            for (Country country : countryList) {
+                country.setCities(getCitiesByCountry(country.getId()));
+            }
+        }
+        return countryList;
     }
 
     public List<Country> findAllCountries(){
-        return countryRepository.findAll();
+
+        List<Country> countryList = countryRepository.findAll();
+        if(!countryList.isEmpty())
+        {
+            for (Country country : countryList) {
+                country.setCities(getCitiesByCountry(country.getId()));
+            }
+        }
+        return countryList;
     }
 
     public List<City> getCitiesByCountry(String countryId){
-        return cityRepository.findByCountryId(countryId);
+
+        List<City> cityList = cityRepository.findByCountryId(countryId);
+        if(!cityList.isEmpty())
+        {
+            for (City city : cityList) {
+                city.setCustomerSites(findAllCustomerSitesByCity(city.getId()));
+            }
+        }
+
+        return cityList;
     }
 }

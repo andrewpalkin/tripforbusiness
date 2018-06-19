@@ -33,6 +33,8 @@ public class Country {
     private List<ImageSource> imgSources;
     @ApiModelProperty(notes = "Google info of current country")
     private GoogleInfo googleInfo;
+    @ApiModelProperty(notes = "Cities related to current country")
+    private List<City> cities;
 
     public String getId() {
         return id;
@@ -96,5 +98,13 @@ public class Country {
 
     public void setGoogleInfo(GoogleInfo googleInfo) {
         this.googleInfo = googleInfo;
+    }
+
+    public List<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(List<City> cities) {
+        this.cities = cities;
     }
 }
