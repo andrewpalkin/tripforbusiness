@@ -40,7 +40,7 @@ public class Place {
     @ApiModelProperty(notes = "The Place priority ")
     private int priority;
 
-    @ApiModelProperty(notes = "Location of place (Country ID, City ID, Site ID)", required = true)
+    @ApiModelProperty(notes = "Location of place (Country ID, City ID, CustomerSite ID)", required = true)
     private Location location;
 
     @ApiModelProperty(notes = "Category ID", required = true)

@@ -12,32 +12,32 @@ import javax.persistence.GenerationType;
 import java.util.Date;
 import java.util.List;
 
-@Document(collection = "site")
-public class Site {
+@Document(collection = "customer_site")
+public class CustomerSite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @ApiModelProperty(notes = "The database generated Place Object ID")
+    @ApiModelProperty(notes = "The database generated Customer Site Object ID")
     private String id;
-    @ApiModelProperty(notes = "The database generated Place Object ID")
+    @ApiModelProperty(notes = "The database generated Customer Site Object ID")
     private String cityId;
-    @ApiModelProperty(notes = "The database generated Place Object ID")
+    @ApiModelProperty(notes = "The database generated Customer Site Object ID")
     private String countryId;
-    @ApiModelProperty(notes = "The date and time, when place information was updated")
+    @ApiModelProperty(notes = "The date and time, when Customer Site information was updated")
     private Date updated_at;
-    @ApiModelProperty(notes = "The date and time, when place information was created")
+    @ApiModelProperty(notes = "The date and time, when Customer Site information was created")
     private Date created_at;
-    @ApiModelProperty(notes = "The site name")
+    @ApiModelProperty(notes = "The Customer Site name")
     private String name;
-    @ApiModelProperty(notes = "The site description")
+    @ApiModelProperty(notes = "The Customer Site description")
     private String description;
-    @ApiModelProperty(notes = "The site address")
+    @ApiModelProperty(notes = "The Customer Site address")
     private String address;
     @ApiModelProperty(notes = "List of links, for example : Website, Wiki, TripAdvisor etc.")
     private List<Link> links;
-    @ApiModelProperty(notes = "List of images related to current site")
+    @ApiModelProperty(notes = "List of images related to current Customer Site")
     private List<ImageSource> imgSources;
-    @ApiModelProperty(notes = "Google info of current site")
+    @ApiModelProperty(notes = "Google info of current Customer Site")
     private GoogleInfo googleInfo;
 
     public String getId() {

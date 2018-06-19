@@ -5,21 +5,58 @@ schema {
 
 type Query{
 
-    findAllSitesByCity (cityId: String!): [Site]
-    findAllSitesByCountry (countryId: String!): [Site]
+    findAllCustomerSitesByCity (cityId: String!): [CustomerSite]
+    findAllCustomerSitesByCountry (countryId: String!): [CustomerSite]
+    findAllCountries: [Country]
 
-    getSite (id:String!): Site
+    getCustomerSite (id:String!): CustomerSite
+    getCountry (id:String!): Country
+    getCountryByNameContains (nameContains: String!): [Country]
+    getCitiesByCountry (countryId: String!): [City]
+
 }
 
 type Mutation {
-    newSite(cityId: String!,
+    newCustomerSite(cityId: String!,
             countryId: String!,
             name: String!,
             address: String!,
-            description: String): Site
+            description: String): CustomerSite
+
+    newCountry(name:String!,
+                description:String):Country
+
+    newCity(name:String!,
+            timeZone:String!,
+            countryId:String!,
+            description:String): City
 }
 
-type Site{
+type Country{
+    id: String
+    updated_at: String
+    created_at: String
+    name: String
+    description: String
+    links: [Link]
+    imgSources: [ImageSource]
+    googleInfo: GoogleInfo
+}
+
+type City{
+    id: String
+    updated_at: String
+    countryId: String
+    created_at: String
+    name: String
+    description: String
+    timeZone: String
+    links: [Link]
+    imgSources: [ImageSource]
+    googleInfo: GoogleInfo
+}
+
+type CustomerSite{
     id: String
     cityId: String
     countryId: String
@@ -27,6 +64,7 @@ type Site{
     created_at: String
     name: String
     description: String
+    address:String
     links: [Link]
     imgSources: [ImageSource]
     googleInfo: GoogleInfo

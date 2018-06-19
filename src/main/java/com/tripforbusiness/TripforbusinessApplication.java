@@ -1,6 +1,8 @@
 package com.tripforbusiness;
 
-import com.tripforbusiness.repository.SiteRepository;
+import com.tripforbusiness.repository.CityRepository;
+import com.tripforbusiness.repository.CountryRepository;
+import com.tripforbusiness.repository.CustomerSiteRepository;
 import com.tripforbusiness.resolver.Mutation;
 import com.tripforbusiness.resolver.Query;
 import org.springframework.boot.SpringApplication;
@@ -15,12 +17,16 @@ public class TripforbusinessApplication {
     }
 
     @Bean
-    public Query query(SiteRepository siteRepository) {
-        return new Query(siteRepository);
+    public Query query(CustomerSiteRepository customerSiteRepository,
+                       CountryRepository countryRepository,
+                       CityRepository cityRepository) {
+        return new Query(customerSiteRepository, countryRepository, cityRepository);
     }
 
     @Bean
-    public Mutation mutation(SiteRepository siteRepository) {
-        return new Mutation(siteRepository);
+    public Mutation mutation(CustomerSiteRepository customerSiteRepository,
+                             CountryRepository countryRepository,
+                             CityRepository cityRepository) {
+        return new Mutation(customerSiteRepository, countryRepository, cityRepository);
     }
 }

@@ -8,7 +8,7 @@ public class Location {
     private String countryId;
     @ApiModelProperty(notes = "City ID")
     private String cityId;
-    @ApiModelProperty(notes = "Site ID")
+    @ApiModelProperty(notes = "CustomerSite ID")
     private String siteId;
 
     public String getCountryId() {
